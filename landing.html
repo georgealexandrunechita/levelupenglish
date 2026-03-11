@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LevelUp English - Learn English by Levels</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Reset simple */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            background-color: #f5f7fb;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header / Nav */
+        header {
+            background-color: #0b3c95;
+            color: #fff;
+            padding: 16px 24px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: #e6ecff;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 48px 24px 40px;
+            background: linear-gradient(120deg, #0b3c95, #2563eb);
+            color: #fff;
+        }
+
+        .hero-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .hero-text {
+            flex: 1 1 260px;
+            min-width: 260px;
+        }
+
+        .hero-text h1 {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .hero-text p {
+            margin-bottom: 20px;
+            max-width: 480px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .badge {
+            background-color: rgba(15, 23, 42, 0.3);
+            padding: 6px 10px;
+            border-radius: 999px;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background-color: #facc15;
+            color: #1f2937;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #eab308;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #e5e7eb;
+            border: 1px solid #e5e7eb;
+            padding: 9px 16px;
+            border-radius: 999px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(15, 23, 42, 0.4);
+        }
+
+        .hero-image {
+            flex: 1 1 260px;
+            min-width: 260px;
+            text-align: center;
+        }
+
+        .hero-card {
+            background-color: #ffffff;
+            color: #111827;
+            border-radius: 16px;
+            padding: 20px 16px;
+            display: inline-block;
+            min-width: 260px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+            text-align: left;
+        }
+
+        .hero-card h2 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .hero-card ul {
+            list-style: none;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .hero-card li {
+            margin-bottom: 6px;
+        }
+
+        .hero-card li span {
+            font-weight: bold;
+            color: #0b3c95;
+        }
+
+        .hero-card small {
+            display: block;
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        /* Sections */
+        section {
+            padding: 40px 24px;
+        }
+
+        section h2 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            text-align: center;
+            color: #111827;
+        }
+
+        section p.section-intro {
+            text-align: center;
+            margin-bottom: 28px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        /* Levels */
+        .levels-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .level-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 16px 18px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .level-name {
+            font-weight: bold;
+            color: #0b3c95;
+        }
+
+        .level-tag {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .level-card p {
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #4b5563;
+        }
+
+        .level-meta {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        /* Why us */
+        .why-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .why-item {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 14px 16px;
+            border: 1px solid #e5e7eb;
+            font-size: 13px;
+        }
+
+        .why-item strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #111827;
+        }
+
+        /* CTA / Form */
+        .cta-box {
+            background-color: #0b3c95;
+            color: #e5e7eb;
+            border-radius: 16px;
+            padding: 24px 20px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .cta-box h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .cta-box p {
+            font-size: 13px;
+            margin-bottom: 18px;
+            color: #d1d5db;
+        }
+
+        .cta-form {
+            display: grid;
+            gap: 10px;
+        }
+
+        .cta-form label {
+            font-size: 12px;
+            margin-bottom: 2px;
+            display: block;
+        }
+
+        .cta-form input,
+        .cta-form select {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 13px;
+        }
+
+        .cta-form button {
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px 24px 28px;
+            font-size: 12px;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        footer a {
+            color: #374151;
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (min-width: 640px) {
+            .levels-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .cta-form {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                align-items: end;
+            }
+
+            .cta-form .full {
+                grid-column: span 4;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav">
+            <div class="logo">LevelUp English</div>
+            <nav class="nav-links">
+                <a href="#levels">Levels</a>
+                <a href="#why">Why us</a>
+                <a href="#contact">Book a free test</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <h1>Learn English by level, from A1 to C1</h1>
+                <p>Join our online English courses designed around CEFR levels, small groups, and real‑life
+                    communication so you can speak with confidence at work, travel, and study abroad.</p>
+
+                <div class="hero-badges">
+                    <span class="badge">Live online classes</span>
+                    <span class="badge">Native teachers</span>
+                    <span class="badge">Flexible schedules</span>
+                </div>
+
+                <div class="hero-cta">
+                    <button class="btn-primary">Start free level test</button>
+                    <button class="btn-secondary">Download course brochure</button>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="hero-card">
+                    <h2>Choose your level</h2>
+                    <ul>
+                        <li><span>A1 – Beginner</span> · Understand and use basic everyday phrases.</li>
+                        <li><span>B1 – Intermediate</span> · Talk about work, school and travel.</li>
+                        <li><span>C1 – Advanced</span> · Use English effectively and fluently.</li>
+                    </ul>
+                    <small>All courses include speaking practice, homework feedback and a completion
+                        certificate.</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Levels -->
+    <section id="levels">
+        <div class="container">
+            <h2>English courses by level</h2>
+            <p class="section-intro">Follow a clear path from beginner to advanced. Each course is 12 weeks, 2 classes
+                per week, focused on speaking, listening, reading and writing.</p>
+
+            <div class="levels-grid">
+                <div class="level-card">
+                    <div class="level-header">
+                        <span class="level-name">A1 Beginner</span>
+                        <span class="level-tag">Start from zero</span>
+                    </div>
+                    <p>Learn basic vocabulary, simple grammar and everyday phrases so you can introduce yourself, ask
+                        for directions and handle simple situations.</p>
+                    <div class="level-meta">12 weeks · 2x90‑minute classes per week</div>
+                </div>
+
+                <div class="level-card">
+                    <div class="level-header">
+                        <span class="level-name">A2 Elementary</span>
+                        <span class="level-tag">Build foundations</span>
+                    </div>
+                    <p>Talk about your routine, family and hobbies, understand short texts and handle common travel
+                        situations with more confidence.</p>
+                    <div class="level-meta">12 weeks · 2x90‑minute classes per week</div>
+                </div>
+
+                <div class="level-card">
+                    <div class="level-header">
+                        <span class="level-name">B1 Intermediate</span>
+                        <span class="level-tag">Real-life English</span>
+                    </div>
+                    <p>Express opinions, describe experiences, write simple emails and follow conversations at work,
+                        school or on trips abroad.</p>
+                    <div class="level-meta">12 weeks · 2x90‑minute classes per week</div>
+                </div>
+
+                <div class="level-card">
+                    <div class="level-header">
+                        <span class="level-name">B2 Upper‑intermediate</span>
+                        <span class="level-tag">Work & study</span>
+                    </div>
+                    <p>Participate in meetings, give short presentations, understand longer texts and communicate with
+                        native speakers more easily.</p>
+                    <div class="level-meta">12 weeks · 2x90‑minute classes per week</div>
+                </div>
+
+                <div class="level-card">
+                    <div class="level-header">
+                        <span class="level-name">C1 Advanced</span>
+                        <span class="level-tag">Fluent communication</span>
+                    </div>
+                    <p>Use English flexibly and effectively for academic, professional and social purposes, with a wide
+                        range of vocabulary.</p>
+                    <div class="level-meta">12 weeks · 2x90‑minute classes per week</div>
+                </div>
+
+                <div class="level-card">
+                    <div class="level-header">
+                        <span class="level-name">Exam preparation</span>
+                        <span class="level-tag">Cambridge · IELTS</span>
+                    </div>
+                    <p>Focused practice on exam tasks, strategies and mock tests for official English exams such as
+                        Cambridge and IELTS.</p>
+                    <div class="level-meta">8–10 weeks · small groups</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why us -->
+    <section id="why">
+        <div class="container">
+            <h2>Why students choose LevelUp</h2>
+            <p class="section-intro">We combine expert teachers, clear structure and modern materials so you always know
+                what to study next and how fast you are progressing.</p>
+
+            <div class="why-grid">
+                <div class="why-item">
+                    <strong>Qualified native teachers</strong>
+                    All our teachers are certified and experienced in teaching online, with clear pronunciation and
+                    dynamic lessons.
+                </div>
+                <div class="why-item">
+                    <strong>Small groups or 1‑to‑1</strong>
+                    Study in groups of 6–8 students or book private classes for a fully personalised study plan.
+                </div>
+                <div class="why-item">
+                    <strong>Flexible schedules</strong>
+                    Morning, afternoon and evening timetables so you can fit English into your work or study routine.
+                </div>
+                <div class="why-item">
+                    <strong>CEFR level system</strong>
+                    Courses follow international CEFR levels (A1–C1) so you can easily show your level to schools and
+                    employers.
+                </div>
+                <div class="why-item">
+                    <strong>Digital materials included</strong>
+                    Interactive exercises, video lessons and downloadable worksheets are included in your course fee.
+                </div>
+                <div class="why-item">
+                    <strong>Progress reports</strong>
+                    Regular feedback from your teacher, level tests and certificates when you complete each course.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="cta-box">
+                <h3>Book your free level test</h3>
+                <p>Tell us a bit about yourself and choose a level. We will contact you within 24 hours to confirm your
+                    free online test and recommend the best course.</p>
+
+                <form class="cta-form">
+                    <div>
+                        <label for="name">Full name</label>
+                        <input type="text" id="name" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label for="level">Current level</label>
+                        <select id="level">
+                            <option value="">Select level</option>
+                            <option value="a1">A1 Beginner</option>
+                            <option value="a2">A2 Elementary</option>
+                            <option value="b1">B1 Intermediate</option>
+                            <option value="b2">B2 Upper‑intermediate</option>
+                            <option value="c1">C1 Advanced</option>
+                            <option value="not-sure">I'm not sure</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="goal">Main goal</label>
+                        <select id="goal">
+                            <option value="">Select goal</option>
+                            <option value="travel">Travel</option>
+                            <option value="work">Work</option>
+                            <option value="study">Study abroad</option>
+                            <option value="exam">Exam preparation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="full">
+                        <button type="submit" class="btn-primary">Send my request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            © 2026 LevelUp English · All rights reserved · <a href="#contact">Contact us</a>
+        </div>
+    </footer>
+</body>
+
+</html>
